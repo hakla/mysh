@@ -1,0 +1,39 @@
+# if zsh
+if [ $(echo $0) = "zsh" ]; then
+  # FIX: history-substring-search doesn't work correctly with zsh version > 5.0.2
+  bindkey '^[[A' history-substring-search-up
+  bindkey '^[[B' history-substring-search-down
+fi
+
+# Aliases
+## NeoVIM ftw
+alias vim=nvim
+
+## Deactivate cp/rm -i
+alias cp=/bin/cp
+alias rm=/bin/rm
+
+## Directory movement
+alias -- -="cd -"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+alias webpack="./node_modules/.bin/webpack"
+
+# Path (includes jenv, nodenv)
+export PATH=$HOME/.jenv/bin:$HOME/.nodenv/bin:$HOME/.bin:/usr/local/bin:$PATH
+
+# jenv
+eval "$(jenv init -)"
+
+# nodenv
+eval "$(nodenv init -)"
+
+# Brew
+case "$OSTYPE" in
+  darwin*)  ;;
+  linux*) export PATH="$HOME/.linuxbrew/bin:$PATH" ;;
+  *) ;;
+esac

@@ -1,0 +1,28 @@
+#!/bin/bash
+
+linux_brew() {
+  echo "Installing Linuxbrew"
+
+  if hash apt-get; then
+    # Install requirements for debian/ubuntu
+    sudo apt-get install build-essential curl git python-setuptools ruby
+  elif hash yum; then
+    # Install requirements for Fedora, CentOS, Red Hat
+    sudo yum groupinstall 'Development Tools' && sudo yum install curl git irb python-setuptools ruby
+  fi
+
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
+  PATH="$HOME/.linuxbrew/bin:$PATH"
+}
+
+osx_brew() {
+  echo "Installing Homebrew"
+
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+}
+
+case "$OSTYPE" in
+  darwin*) osx_brew ;; 
+  linux*) linux_brew ;;
+  *)        echo "unsupported: $OSTYPE" && exit ;;
+esac

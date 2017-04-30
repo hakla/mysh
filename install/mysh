@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Copy .myshrc
+cp $HOME/.mysh/rc/.myshrc ~/.myshrc
