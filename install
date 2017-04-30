@@ -1,19 +1,19 @@
 #!/bin/usr/bash
 
 # Install brew. Other stuff will be installed via brew
-$HOME/.mysh/install/brew
+$HOME/.mysh/modules/brew
 
 # Install git (always needed)
-$HOME/.mysh/install/git
+$HOME/.mysh/modules/git
 
 # java environment manager
-$HOME/.mysh/install/jenv
+$HOME/.mysh/modules/jenv
 
 # node environment manager
-$HOME/.mysh/install/nodenv
+$HOME/.mysh/modules/nodenv
 
 # neovim
-$HOME/.mysh/install/neovim
+$HOME/.mysh/modules/neovim
 
 # install mysh
-$HOME/.mysh/install/mysh
+$HOME/.mysh/modules/mysh
