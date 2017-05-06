@@ -3,9 +3,6 @@
 # Install brew. Other stuff will be installed via brew
 $HOME/.mysh/modules/brew
 
-# Install git (always needed)
-$HOME/.mysh/modules/git
-
 # java environment manager
 $HOME/.mysh/modules/jenv
 
