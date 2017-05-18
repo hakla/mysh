@@ -37,6 +37,18 @@ let g:multi_cursor_next_key='<C-0>'
 " vue js
 Plugin 'posva/vim-vue'
 
+" NERDTree
+Plugin 'scrooloose/nerdtree'
+
+" vim-notes
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-notes'
+
+
+" open-browser
+Plugin 'tyru/open-browser.vim'
+
+
 " }}}
 
 " Vundle end {{{
@@ -83,9 +95,6 @@ set showmatch           " highlight matching [{()}]
 " Search {{{
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
-
-" turn off search highlight
-nnoremap <leader>. :noh<CR>
 " }}}
 
 " Fold {{{
@@ -120,6 +129,15 @@ function! <SID>StripTrailingWhitespaces()
     let @/=_s
     call cursor(l, c)
 endfunction
+
+function! s:DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffSaved call s:DiffWithSaved()
 " }}}
 
 " Moving about {{{
@@ -133,6 +151,27 @@ let mapleader=","       " leader is comma
 
 " jk is escape
 inoremap jk <esc>
+
+" map vim-notes
+nnoremap <leader>nu :Note Übersicht<CR>
+
+" turn off search highlight
+nnoremap <leader>. :noh<CR>
+
+" open link under cursor
+nnoremap <leader>gf <Plug>(openbrowser-smart-search)
+
+" open notes
+nnoremap <leader>nn :Note Übersicht<CR>
+nnoremap <leader>nt :Note todo<CR>
+vnoremap <leader>nf :w!<CR>:NoteFromSelectedText<CR>
+
+" todo characters
+nnoremap <leader>+ a <C-v>u2713<ESC>
+
+" replace currently highlighted text
+vnoremap <leader>rtl "ry:s/<C-r>r//g<left><left>
+vnoremap <leader>rtg "ry:%s/<C-r>r//g<left><left>
 " }}}
 
 " Gundo {{{

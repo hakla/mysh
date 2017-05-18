@@ -11,3 +11,4 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 cp $HOME/.mysh/rc/.vimrc ~/.vimrc
 
 echo "To finish Vundle launch `vim` and run `:PluginInstall`"
+echo "To finish Vundle launch `vim` and run `:PluginInstall`"
