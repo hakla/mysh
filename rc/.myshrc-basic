@@ -6,9 +6,6 @@ if [ $(echo $0) = "zsh" ]; then
 fi
 
 # Aliases
-## NeoVIM ftw
-alias vim=nvim
-
 ## Deactivate cp/rm -i
 alias cp=/bin/cp
 alias rm=/bin/rm
