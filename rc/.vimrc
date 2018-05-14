@@ -68,7 +68,9 @@ filetype plugin indent on    " required
 " }}}
 
 " Colors {{{
-colorscheme badwolf         " awesome colorscheme
+if !empty(glob("/home/admin/.vim/bundle/badwolf"))
+  colorscheme badwolf         " awesome colorscheme
+endif
 " }}}
 
 " Stuff {{{
@@ -157,6 +159,9 @@ nnoremap <leader>nu :Note Übersicht<CR>
 
 " turn off search highlight
 nnoremap <leader>. :noh<CR>
+
+" toggle line numbers
+nnoremap <leader>ln :set nu!<CR>
 
 " open link under cursor
 nnoremap <leader>gf <Plug>(openbrowser-smart-search)
@@ -257,6 +262,6 @@ set splitbelow
 set splitright
 " }}}
 
-" }}} 
+" }}}
 
 " vim:foldmethod=marker:foldlevel=0
