@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+usage() { 
+  echo "Usage: $0 name mysql-server-port db-name mysql-user mysql-pwd [-v mysql-version] [-s mysql-db-location] [-r mysql-root-pwd]";
+  echo "e.g. : $0 mysql-test 3310 database-name user passwd";
+  exit 0;
+}
+[ $# -lt 5 ] && usage
+
+name=$1
+port=$2
+db=$3
+user=$4
+pass=$5
+version=10.4
+db_location="/tmp/database-$name"
+root_pass=foobar
+
+shift 5 # don't parse positional parameters
+while getopts "v:s:r:" arg; do
+  case $arg in
+    v) version=$OPTARG ;;
+    s) db_location=$OPTARG ;;
+    r) root_pass=$OPTARG ;;
+  esac
+done
+
+# mkdir $db_location
+
+echo "Starting creation of container $name"
+
+docker run -d \
+  --name $name \
+  --publish $port:3306 \
+  --env MYSQL_ROOT_HOST=% \
+  --env MYSQL_ROOT_PASSWORD=$root_pass \
+  --env MYSQL_DATABASE=$db \
+  --env MYSQL_USER=$user \
+  --env MYSQL_PASSWORD=$pass \
+  mariadb:$version --max_allowed_packet=64M --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+# If you want to mount the mysql data move the following line after the last --env command above
+#  --volume $db_location=/var/lib/mysql \
+
+echo "Waiting for mysql server to be available..."
+
+test="docker exec -t $name mysql -u root -p$root_pass -e 'SHOW DATABASES ;' 2>&1 > /dev/null"
+eval $test
+while [ $? != 0 ]; do
+  sleep 1
+  eval $test
+done
+
+echo "Server is available"
+echo "mysql -u [mysql-user] -h [192.168.1.5] -P [port] -p[password]"
+
