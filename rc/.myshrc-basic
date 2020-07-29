@@ -107,6 +107,7 @@ alias gp='git push'
 alias gpd='git push --dry-run'
 alias gpoat='git push origin --all && git push origin --tags'
 alias gpu='git push upstream'
+alias gpun='git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)'
 alias gpv='git push -v'
 
 alias gr='git remote'
