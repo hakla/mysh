@@ -6,8 +6,12 @@ cd ~/.nodenv && src/configure && make -C src
 
 export PATH="$HOME/.nodenv/bin:$PATH"
 
-# node-build
+# nodenv-build
 git clone https://github.com/nodenv/node-build.git $(nodenv root)/plugins/node-build
 
-# node-rehash
+# nodenv-rehash
 git clone https://github.com/nodenv/nodenv-package-rehash.git "$(nodenv root)"/plugins/nodenv-package-rehash
+
+# nodenv-update
+git clone https://github.com/nodenv/nodenv-update.git "$(nodenv root)"/plugins/nodenv-update
+
