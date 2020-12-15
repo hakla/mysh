@@ -199,7 +199,9 @@ parse_git_branch() {
 
 # export PS1="\033[1m\u@\h \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\]\033[0m $ "
 
+# Source git completion
 source $HOME/.git-completion.bash
 
-alias ts="time-sync"
+# Load ssh key
+keychain ~/.ssh/id_rsa
 
