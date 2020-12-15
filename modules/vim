@@ -7,3 +7,4 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 cp $HOME/.mysh/rc/.vimrc ~/.vimrc
 
 vim +PluginInstall +qall
+

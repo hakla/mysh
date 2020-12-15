@@ -1,4 +1,14 @@
 #!/bin/bash
 
 # Copy .myshrc
-cp $HOME/.mysh/rc/.myshrc ~/.myshrc
+cp $HOME/.mysh/rc/.myshrc $HOME/.myshrc
+
+# Copy git completion
+cp $HOME/.mysh/files/.git-completion.bash $HOME/.git-completion.bash
+
+# Add source command to .bashrc
+echo "" >> .bashrc
+echo "# Source myshrc" >> .bashrc
+echo "source $HOME/.myshrc" >> .bashrc
+echo "" >> .bashrc
+
