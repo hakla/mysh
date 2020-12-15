@@ -1,5 +1,11 @@
 My shell setup
 
+```bash
+git clone https://github.com/hakla/mysh $HOME/.mysh
+
+$HOME/.mysh/install
+```
+
 # Setup
 
 This setup includes:
